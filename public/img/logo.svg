@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Ferienhaus Saaler Bodden – Bildmarke -->
+  <!-- Sonne -->
+  <g stroke="#f0b429" stroke-width="14" stroke-linecap="round" fill="#f5c84c">
+    <circle cx="356" cy="120" r="44" stroke="none"/>
+    <line x1="356" y1="44" x2="356" y2="62"/>
+    <line x1="420" y1="66" x2="408" y2="80"/>
+    <line x1="432" y1="120" x2="414" y2="120"/>
+    <line x1="292" y1="66" x2="304" y2="80"/>
+  </g>
+
+  <!-- Haus -->
+  <g stroke="#3f5a1e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M148 268 L280 152 L412 262" stroke-width="26"/>
+    <path d="M180 250 L180 358 L380 358 L380 246" stroke-width="22" fill="#ffffff"/>
+  </g>
+  <!-- Fenster -->
+  <g fill="#3f5a1e">
+    <rect x="252" y="238" width="26" height="26" rx="3"/>
+    <rect x="286" y="238" width="26" height="26" rx="3"/>
+    <rect x="252" y="272" width="26" height="26" rx="3"/>
+    <rect x="286" y="272" width="26" height="26" rx="3"/>
+  </g>
+
+  <!-- Schilf und Gräser -->
+  <g fill="#4d7c1f">
+    <rect x="118" y="170" width="12" height="170" rx="6"/>
+    <rect x="110" y="138" width="28" height="56" rx="14" fill="#3f5a1e"/>
+    <rect x="158" y="200" width="11" height="140" rx="5"/>
+    <rect x="151" y="172" width="25" height="48" rx="12" fill="#3f5a1e"/>
+    <path d="M108 348 C82 314 64 282 58 240 C86 282 100 316 116 348 Z"/>
+    <path d="M136 352 C120 310 116 268 124 226 C140 270 146 314 148 352 Z"/>
+    <path d="M172 350 C182 310 198 278 224 254 C206 294 188 328 182 352 Z"/>
+    <path d="M86 354 C64 332 48 310 40 284 C62 310 78 334 92 356 Z"/>
+  </g>
+
+  <!-- Ufer-Schwung (grün) -->
+  <path d="M64 396 C160 352 330 344 448 372 L444 394 C330 368 176 376 72 416 Z" fill="#4d7c1f"/>
+  <!-- Welle gelb -->
+  <path d="M92 428 C190 394 330 390 430 412 C434 418 432 426 426 430 C326 410 200 416 104 446 C94 444 86 434 92 428 Z" fill="#f0b429"/>
+  <!-- Wellen blau -->
+  <path d="M112 458 C208 428 340 424 428 442 C432 448 430 456 424 460 C334 444 216 450 126 476 C116 474 106 464 112 458 Z" fill="#2f7cc4"/>
+  <path d="M156 488 C232 466 330 462 402 472 C406 478 404 484 398 488 C328 480 240 484 172 502 C162 500 150 492 156 488 Z" fill="#2f7cc4"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 360">
+  <!-- Ferienhaus Saaler Bodden – Logo mit Schriftzug -->
+  <!-- Bildmarke -->
+  <g transform="translate(10,10) scale(0.664)">
+    <circle cx="256" cy="256" r="232" fill="none" stroke="#4d7c1f" stroke-width="20"/>
+    <g stroke="#4d7c1f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M168 262 L296 138 L424 250" stroke-width="22"/>
+      <path d="M196 246 L196 316" stroke-width="18"/>
+      <path d="M382 240 L382 392" stroke-width="20"/>
+    </g>
+    <g fill="#4d7c1f">
+      <rect x="272" y="226" width="24" height="24" rx="3"/>
+      <rect x="304" y="226" width="24" height="24" rx="3"/>
+      <rect x="272" y="258" width="24" height="24" rx="3"/>
+      <rect x="304" y="258" width="24" height="24" rx="3"/>
+    </g>
+    <g fill="#4d8c26">
+      <rect x="160" y="150" width="12" height="180" rx="6"/>
+      <rect x="152" y="118" width="28" height="58" rx="14" fill="#3d6b1e"/>
+      <rect x="200" y="188" width="11" height="140" rx="5"/>
+      <rect x="193" y="158" width="25" height="50" rx="12" fill="#3d6b1e"/>
+      <path d="M150 336 C120 300 100 262 96 216 C122 258 142 300 158 336 Z"/>
+      <path d="M176 340 C158 296 152 252 158 208 C176 254 184 300 188 340 Z"/>
+      <path d="M212 338 C222 296 240 262 268 236 C248 278 230 314 224 340 Z"/>
+      <path d="M126 344 C102 320 84 296 74 268 C98 296 116 322 132 346 Z"/>
+      <path d="M238 336 C252 306 272 282 298 266 C278 296 258 322 248 340 Z"/>
+    </g>
+    <path d="M84 386 C170 344 320 336 430 362 L426 384 C320 360 180 368 92 406 Z" fill="#4d7c1f"/>
+    <path d="M110 416 C200 384 330 380 420 400 C424 406 422 414 416 418 C324 400 206 406 120 434 C110 432 104 422 110 416 Z" fill="#f1a51f"/>
+    <path d="M128 446 C216 418 336 414 418 430 C422 436 420 444 414 448 C330 434 222 440 140 464 C130 462 122 452 128 446 Z" fill="#2f7cc4"/>
+    <path d="M170 476 C240 456 330 452 396 462 C400 468 398 474 392 478 C328 470 246 474 184 490 C174 488 164 480 170 476 Z" fill="#2f7cc4"/>
+  </g>
+  <!-- Schriftzug -->
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="770" y="155" font-size="105" fill="#3d6b1e" letter-spacing="4">FERIENHAUS</text>
+    <text x="770" y="228" font-size="52" fill="#3d6b1e" letter-spacing="14" font-weight="bold">SAALER BODDEN</text>
+    <line x1="415" y1="211" x2="500" y2="211" stroke="#3d6b1e" stroke-width="6"/>
+    <line x1="1040" y1="211" x2="1125" y2="211" stroke="#3d6b1e" stroke-width="6"/>
+    <text x="770" y="300" font-size="48" fill="#1d3b1e">Ruhe. Natur. Erholung Pur.</text>
+  </g>
+</svg>

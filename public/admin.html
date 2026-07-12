@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin – Ferienhaus Saaler Bodden</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-wrap { max-width: 880px; margin: 0 auto; padding: 44px 20px 90px; }
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
+    .admin-header .brand img { width: 56px; height: 56px; }
+    .panel { margin-bottom: 24px; }
+    .login-box { max-width: 420px; margin: 9vh auto; text-align: center; }
+    .login-box img { width: 92px; margin: 0 auto 14px; }
+    .login-box h2 { font-family: 'Fraunces', Georgia, serif; color: var(--green-700); margin-bottom: 4px; }
+    input, select {
+      width: 100%; padding: 12px 14px; border: 1px solid #d5d2c2; border-radius: 7px;
+      font-family: inherit; font-size: 0.93rem; background: #fff; color: var(--ink);
+    }
+    input:focus, select:focus { outline: 2px solid var(--green-500); border-color: transparent; }
+    label { display: block; font-size: 0.8rem; font-weight: 600; margin: 14px 0 6px; text-align: left; }
+    .msg { padding: 11px 15px; border-radius: 8px; margin-top: 14px; font-size: 0.88rem; display: none; }
+    .msg.err { background: #fdebea; color: #b3362c; display: block; }
+    .msg.ok { background: #edf3e2; color: var(--green-800); display: block; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .booking-list { list-style: none; padding: 0; }
+    .booking-list li {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 13px 16px; border: 1px solid var(--line); border-radius: 9px;
+      margin-bottom: 10px; background: var(--cream);
+    }
+    .booking-list .dates { font-weight: 600; font-size: 0.92rem; }
+    .booking-list .note { color: var(--muted); font-size: 0.85rem; flex: 1; min-width: 120px; }
+    .badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 11px; border-radius: 999px; }
+    .badge.belegt { background: var(--red); color: #fff; }
+    .badge.angefragt { background: var(--yellow); color: var(--ink); }
+    .booking-list button {
+      border: none; padding: 8px 14px; border-radius: 7px; cursor: pointer;
+      font-family: inherit; font-weight: 600; font-size: 0.8rem;
+    }
+    .btn-del { background: #fdebea; color: #b3362c; }
+    .btn-del:hover { background: #b3362c; color: #fff; }
+    .btn-status { background: #e8eef7; color: var(--blue); }
+    .btn-status:hover { background: var(--blue); color: #fff; }
+    .logout { background: none; border: 1px solid #c9c5b4; border-radius: 999px; padding: 9px 20px; cursor: pointer; font-family: inherit; font-size: 0.82rem; font-weight: 600; }
+    .logout:hover { background: var(--green-900); color: #fff; border-color: var(--green-900); }
+    .hidden { display: none; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ===== Login ===== -->
+<div class="admin-wrap hidden" id="loginView">
+  <div class="login-box panel">
+    <img src="img/logo.svg" alt="Logo">
+    <h2>Admin-Bereich</h2>
+    <p style="color:var(--muted); font-size:.9rem">Buchungskalender Ferienhaus Saaler Bodden</p>
+    <form id="loginForm">
+      <label for="pw">Passwort</label>
+      <input type="password" id="pw" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-dark" style="width:100%; margin-top:18px">Anmelden</button>
+    </form>
+    <div class="msg" id="loginMsg"></div>
+    <p style="margin-top:22px; font-size:.88rem"><a href="/">← zurück zur Website</a></p>
+  </div>
+</div>
+
+<!-- ===== Admin-Panel ===== -->
+<div class="admin-wrap hidden" id="adminView">
+  <div class="admin-header">
+    <a class="brand" href="/">
+      <img src="img/logo.svg" alt="Logo">
+      <span class="wordmark">
+        <b>Buchungsverwaltung</b>
+        <small>Ferienhaus Saaler Bodden</small>
+      </span>
+    </a>
+    <button class="logout" id="logoutBtn">Abmelden</button>
+  </div>
+
+  <div class="panel">
+    <span class="sec-title">Belegung eintragen</span>
+    <form id="addForm">
+      <div class="form-row">
+        <div>
+          <label for="bStart">Anreise</label>
+          <input type="date" id="bStart" required>
+        </div>
+        <div>
+          <label for="bEnd">Abreise</label>
+          <input type="date" id="bEnd" required>
+        </div>
+        <div>
+          <label for="bStatus">Status</label>
+          <select id="bStatus">
+            <option value="belegt">Belegt</option>
+            <option value="angefragt">Angefragt</option>
+          </select>
+        </div>
+      </div>
+      <label for="bNote">Notiz (optional, nur intern sichtbar)</label>
+      <input id="bNote" maxlength="200" placeholder="z. B. Familie Müller, 6 Personen">
+      <button type="submit" class="btn btn-dark" style="margin-top:18px">Eintragen</button>
+      <div class="msg" id="addMsg"></div>
+      <p style="color:var(--muted); font-size:.82rem; margin-top:12px">
+        Der Abreisetag wird im Kalender wieder als frei angezeigt, sodass Anschlussbuchungen möglich sind.
+      </p>
+    </form>
+  </div>
+
+  <div class="panel">
+    <span class="sec-title">Aktuelle Einträge</span>
+    <ul class="booking-list" id="bookingList"></ul>
+    <p id="emptyHint" style="color:var(--muted); font-size:.9rem">Noch keine Belegungen eingetragen.</p>
+  </div>
+
+  <div class="panel">
+    <span class="sec-title">Kalender-Vorschau</span>
+    <div class="cal-head">
+      <button id="calPrev" aria-label="Voriger Monat">‹</button>
+      <span class="cal-title" id="calTitle"></span>
+      <button id="calNext" aria-label="Nächster Monat">›</button>
+    </div>
+    <div class="cal-week">
+      <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+    </div>
+    <div class="cal-days" id="calDays"></div>
+    <div class="cal-legend">
+      <span><i class="i-free"></i>Frei</span>
+      <span><i class="i-req"></i>Angefragt</span>
+      <span><i class="i-booked"></i>Belegt</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  let bookings = [];
+  const today = new Date();
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  const MONTH_NAMES = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const fmt = (s) => new Date(s + 'T12:00').toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+  function show(view) {
+    $('loginView').classList.toggle('hidden', view !== 'login');
+    $('adminView').classList.toggle('hidden', view !== 'admin');
+  }
+
+  async function api(url, opts = {}) {
+    const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...opts });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || 'Fehler ' + res.status);
+    return data;
+  }
+
+  // ---------- Kalender ----------
+  function iso(y, m, d) { return `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`; }
+  function statusFor(ds) {
+    const b = bookings.find((x) => ds >= x.start && ds < x.end);
+    return b ? (b.status === 'angefragt' ? 'req' : 'booked') : 'free';
+  }
+
+  function renderCalendar() {
+    const grid = $('calDays');
+    grid.innerHTML = '';
+    $('calTitle').textContent = `${MONTH_NAMES[viewMonth]} ${viewYear}`;
+    const first = new Date(viewYear, viewMonth, 1);
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const firstWeekday = (first.getDay() + 6) % 7;
+    for (let e = 0; e < firstWeekday; e++) grid.insertAdjacentHTML('beforeend', '<span class="empty"></span>');
+    for (let day = 1; day <= daysInMonth; day++) {
+      const ds = iso(viewYear, viewMonth, day);
+      grid.insertAdjacentHTML('beforeend', `<span class="${statusFor(ds)}">${day}</span>`);
+    }
+  }
+  $('calPrev').addEventListener('click', () => { const d = new Date(viewYear, viewMonth - 1, 1); viewYear = d.getFullYear(); viewMonth = d.getMonth(); renderCalendar(); });
+  $('calNext').addEventListener('click', () => { const d = new Date(viewYear, viewMonth + 1, 1); viewYear = d.getFullYear(); viewMonth = d.getMonth(); renderCalendar(); });
+
+  // ---------- Buchungsliste ----------
+  function renderList() {
+    const ul = $('bookingList');
+    ul.innerHTML = '';
+    $('emptyHint').style.display = bookings.length ? 'none' : 'block';
+    bookings.forEach((b) => {
+      const li = document.createElement('li');
+      const nights = Math.round((new Date(b.end) - new Date(b.start)) / 86400000);
+      const status = b.status === 'angefragt' ? 'angefragt' : 'belegt';
+      li.innerHTML = `
+        <span class="badge ${status}">${status}</span>
+        <span class="dates">${fmt(b.start)} → ${fmt(b.end)} <small style="color:var(--muted)">(${nights} Nächte)</small></span>
+        <span class="note"></span>
+        <button type="button" class="btn-status">${status === 'angefragt' ? '→ Belegt' : '→ Angefragt'}</button>
+        <button type="button" class="btn-del">Löschen</button>`;
+      li.querySelector('.note').textContent = b.note || '';
+      li.querySelector('.btn-status').addEventListener('click', async () => {
+        try {
+          await api('/api/admin/bookings/' + b.id, {
+            method: 'PATCH',
+            body: JSON.stringify({ status: status === 'angefragt' ? 'belegt' : 'angefragt' }),
+          });
+          await load();
+        } catch (err) { alert(err.message); }
+      });
+      li.querySelector('.btn-del').addEventListener('click', async () => {
+        if (!confirm(`Eintrag ${fmt(b.start)} – ${fmt(b.end)} wirklich löschen?`)) return;
+        try {
+          await api('/api/admin/bookings/' + b.id, { method: 'DELETE' });
+          await load();
+        } catch (err) { alert(err.message); }
+      });
+      ul.appendChild(li);
+    });
+  }
+
+  async function load() {
+    bookings = await api('/api/admin/bookings');
+    renderList();
+    renderCalendar();
+  }
+
+  // ---------- Login / Logout ----------
+  $('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = $('loginMsg');
+    msg.className = 'msg';
+    try {
+      await api('/api/login', { method: 'POST', body: JSON.stringify({ password: $('pw').value }) });
+      $('pw').value = '';
+      show('admin');
+      await load();
+    } catch (err) {
+      msg.textContent = err.message;
+      msg.className = 'msg err';
+    }
+  });
+
+  $('logoutBtn').addEventListener('click', async () => {
+    await api('/api/logout', { method: 'POST' }).catch(() => {});
+    show('login');
+  });
+
+  // ---------- Belegung hinzufügen ----------
+  $('addForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = $('addMsg');
+    msg.className = 'msg';
+    try {
+      await api('/api/admin/bookings', {
+        method: 'POST',
+        body: JSON.stringify({
+          start: $('bStart').value,
+          end: $('bEnd').value,
+          status: $('bStatus').value,
+          note: $('bNote').value,
+        }),
+      });
+      msg.textContent = 'Eintrag gespeichert.';
+      msg.className = 'msg ok';
+      $('bStart').value = ''; $('bEnd').value = ''; $('bNote').value = '';
+      await load();
+    } catch (err) {
+      msg.textContent = err.message;
+      msg.className = 'msg err';
+    }
+  });
+
+  $('bStart').addEventListener('change', () => {
+    if ($('bStart').value) $('bEnd').min = $('bStart').value;
+  });
+
+  // ---------- Start ----------
+  api('/api/me')
+    .then((me) => {
+      if (me.isAdmin) { show('admin'); return load(); }
+      show('login');
+    })
+    .catch(() => show('login'));
+})();
+</script>
+</body>
+</html>
