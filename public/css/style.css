@@ -85,14 +85,17 @@ a { color: var(--green-700); }
   border-bottom: 2px solid transparent;
 }
 .main-nav a:hover, .main-nav a.active { color: var(--green-700); border-bottom-color: var(--green-500); }
-.main-nav .btn-dark { border-bottom: none; padding: 12px 22px; }
-.main-nav .btn-dark:hover { color: #fff; }
+.main-nav a.btn-dark { color: #fff; border-bottom: none; padding: 12px 22px; }
+.main-nav a.btn-dark:hover { color: #fff; border-bottom: none; }
 .nav-toggle { display: none; background: none; border: none; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
 
 /* ===== Hero ===== */
 .hero {
   margin-top: 92px; position: relative; min-height: 560px;
-  background: var(--hero-img, linear-gradient(#dfe8d0, #c6d4b2)) left center/cover no-repeat;
+  background-color: #dfe8d0;
+  background-position: left center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex; align-items: center;
 }
 .hero::before {
