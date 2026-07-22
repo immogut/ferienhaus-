@@ -1,3 +1,52 @@
 {
-  "bookings": []
+  "bookings": [
+    {
+      "id": "seed-2026-07",
+      "start": "2026-07-23",
+      "end": "2026-08-01",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (laufende Buchung Juli)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "id": "seed-2026-08",
+      "start": "2026-08-02",
+      "end": "2026-10-03",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (August bis Anfang Oktober)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "id": "seed-2026-10",
+      "start": "2026-10-15",
+      "end": "2026-10-20",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (Mitte Oktober)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "id": "seed-2026-12",
+      "start": "2026-12-26",
+      "end": "2027-01-02",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (Silvester)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "id": "seed-2027-06",
+      "start": "2027-06-20",
+      "end": "2027-06-27",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (Juni 2027)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "id": "seed-2027-07",
+      "start": "2027-07-31",
+      "end": "2027-08-07",
+      "status": "belegt",
+      "note": "Übernommen aus altem Kalender (Ende Juli / Anfang August 2027)",
+      "createdAt": "2026-07-22T00:00:00.000Z"
+    }
+  ]
 }

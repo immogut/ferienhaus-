@@ -33,7 +33,14 @@ if (!process.env.ADMIN_PASSWORD) {
 function ensureDataFile() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(DATA_FILE)) {
-    fs.writeFileSync(DATA_FILE, JSON.stringify({ bookings: [] }, null, 2));
+    // Beim allerersten Start: mitgelieferte Startdaten übernehmen (z. B. auf ein Railway-Volume)
+    const seedFile = path.join(__dirname, 'data', 'bookings.json');
+    if (seedFile !== DATA_FILE && fs.existsSync(seedFile)) {
+      fs.copyFileSync(seedFile, DATA_FILE);
+      console.log('Startdaten aus data/bookings.json übernommen.');
+    } else {
+      fs.writeFileSync(DATA_FILE, JSON.stringify({ bookings: [] }, null, 2));
+    }
   }
 }
 function readData() {
