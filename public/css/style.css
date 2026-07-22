@@ -67,6 +67,7 @@ a { color: var(--green-700); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 92px; gap: 20px; }
 .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
 .brand img { width: 62px; height: 62px; }
+.brand img.brand-logo { width: auto; height: 60px; }
 .brand .wordmark { line-height: 1.05; }
 .brand .wordmark b {
   display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 600;
@@ -91,14 +92,14 @@ a { color: var(--green-700); }
 /* ===== Hero ===== */
 .hero {
   margin-top: 92px; position: relative; min-height: 560px;
-  background: var(--hero-img, linear-gradient(#dfe8d0, #c6d4b2)) center/cover no-repeat;
+  background: var(--hero-img, linear-gradient(#dfe8d0, #c6d4b2)) left center/cover no-repeat;
   display: flex; align-items: center;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(95deg, rgba(244, 242, 234, 0.88) 0%, rgba(244, 242, 234, 0.55) 34%, rgba(244, 242, 234, 0) 62%);
+  background: linear-gradient(265deg, rgba(244, 242, 234, 0.88) 0%, rgba(244, 242, 234, 0.55) 34%, rgba(244, 242, 234, 0) 62%);
 }
-.hero-content { position: relative; max-width: 560px; padding: 70px 0; }
+.hero-content { position: relative; max-width: 560px; padding: 70px 0; margin-left: auto; }
 .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.1rem); line-height: 1.08; margin-bottom: 22px; }
 .hero p { font-size: 1.08rem; color: var(--ink); margin-bottom: 34px; }
 
@@ -272,7 +273,7 @@ details.info table td:last-child { text-align: right; font-weight: 600; color: v
 }
 .footer-main .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
 .footer-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
-.footer-brand img { width: 56px; height: 56px; }
+.footer-brand img { width: auto; height: 68px; }
 .footer-links { text-align: right; font-size: 0.85rem; }
 .footer-links a { color: var(--ink); text-decoration: none; margin-left: 18px; }
 .footer-links a:hover { color: var(--green-500); }
@@ -294,6 +295,7 @@ details.info table td:last-child { text-align: right; font-weight: 600; color: v
   .main-nav.open { display: flex; }
   .brand .wordmark b { font-size: 1.05rem; }
   .brand .wordmark b + b { font-size: 0.9rem; }
+  .brand img.brand-logo { height: 46px; }
   .hero { min-height: 480px; }
   .hero::before {
     background: linear-gradient(rgba(244, 242, 234, 0.9), rgba(244, 242, 234, 0.65));
