@@ -88,7 +88,7 @@
     .catch(() => renderCalendar());
 
   // ---------- Kontakt / Anfrage ----------
-  let bookingEmail = 'info@ferienhaus-saaler-bodden.de';
+  let bookingEmail = 'service@petersen-immo.de';
   const mailLink = document.getElementById('mailLink');
   const mailText = document.getElementById('mailText');
   function applyMail() {

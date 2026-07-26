@@ -30,7 +30,7 @@ ADMIN_PASSWORD=geheim npm start
    | `ADMIN_PASSWORD` | Passwort für den Admin-Bereich (Pflicht!)        |
    | `SESSION_SECRET` | langer Zufallsstring                             |
    | `DATA_DIR`       | `/data` (Mount-Pfad des Volumes)                 |
-   | `BOOKING_EMAIL`  | E-Mail für Buchungsanfragen (kommt noch – bis dahin gilt info@ferienhaus-saaler-bodden.de) |
+   | `BOOKING_EMAIL`  | E-Mail für Buchungsanfragen (kommt noch – bis dahin gilt service@petersen-immo.de) |
 
 5. Domain verbinden: Service → Settings → Networking → Custom Domain
    (`ferienhaus-saaler-bodden.de`), beim Domain-Anbieter den angezeigten CNAME setzen.

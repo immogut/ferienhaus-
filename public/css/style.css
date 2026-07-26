@@ -93,7 +93,7 @@ a { color: var(--green-700); }
 .hero {
   margin-top: 92px; position: relative; min-height: 560px;
   background-color: #dfe8d0;
-  background-position: left center;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex; align-items: center;

@@ -21,7 +21,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'aendern-bitte';
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
-const BOOKING_EMAIL = process.env.BOOKING_EMAIL || 'info@ferienhaus-saaler-bodden.de';
+const BOOKING_EMAIL = process.env.BOOKING_EMAIL || 'service@petersen-immo.de';
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'bookings.json');
 
